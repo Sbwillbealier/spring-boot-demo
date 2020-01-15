@@ -53,6 +53,33 @@ public class TaskFactory {
     }
 
     /**
+     * 模拟3秒的异步任务-无返回值
+     */
+    @Async
+    public void asyncTask4() throws InterruptedException {
+        doTask("asyncTask3", 3);
+    }
+
+    /**
+     * 模拟3秒的异步任务-无返回值，带参数
+     */
+    @Async
+    public void asyncTask5(String taskName) throws InterruptedException {
+        doTask("asyncTask3", 3);
+        log.info("异步任务参数taskName:{}", taskName);
+    }
+
+    /**
+     * 模拟3秒的异步任务-修改默认的SimpleAsyncTaskExecutor，使用threadPoolTaskExecutor
+     */
+    @Async("threadPoolTaskExecutor")
+    public void asyncTask6() throws InterruptedException {
+        doTask("asyncTask3", 3);
+        log.info("Execute method with configured executor - " + Thread.currentThread().getName());
+    }
+
+
+    /**
      * 模拟5秒的同步任务
      */
     public void task1() throws InterruptedException {

@@ -46,6 +46,18 @@ public class TaskFactoryTest extends SpringBootDemoAsyncApplicationTests {
     }
 
     /**
+     * 测试异步任务-无返回值
+     */
+    @Test
+    public void asyncTaskTest2() throws InterruptedException, ExecutionException {
+        long start = System.currentTimeMillis();
+        task.asyncTask4();
+        long end = System.currentTimeMillis();
+
+        log.info("异步任务主线程执行结束，总耗时：{} 毫秒", (end - start));
+    }
+
+    /**
      * 测试同步任务
      */
     @Test
